@@ -21,10 +21,12 @@ const resetGame = () => {
   }
   heading.innerText = "TIC TAC TOE";
   resetButton.innerText = "RESET GAME";
+  turnCount = 0;
 };
 
 resetButton.addEventListener("click", resetGame);
 
+let turnCount = 0;
 let whoseTurn = true;
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -37,9 +39,18 @@ buttons.forEach((button) => {
     }
     button.disabled = "true";
 
+    checkDraw();
     checkWinner();
   });
 });
+
+const checkDraw = () => {
+  turnCount++;
+  if (turnCount === 9) {
+    heading.innerText = "ITS A DRAW";
+    resetButton.innerText = "PLAY AGAIN";
+  }
+};
 
 const checkWinner = () => {
   for (let pattern of winPattern) {
@@ -54,6 +65,7 @@ const checkWinner = () => {
         }
         heading.innerText = `${pos0} IS WINNER `;
         resetButton.innerText = "NEW GAME";
+        continue;
       }
     }
   }
