@@ -48,7 +48,7 @@ const checkDraw = () => {
   turnCount++;
   if (turnCount === 9) {
     heading.innerText = "ITS A DRAW";
-    resetButton.innerText = "PLAY AGAIN";
+    resetButton.innerText = "NEW GAME";
   }
 };
 
